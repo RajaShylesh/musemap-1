@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MuseMap - Register</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fde5d4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #f16322;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 18px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            color: #f16322;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #f16322;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #d14e1a;
+        }
+
+        .login-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .login-link a {
+            color: #f16322;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">MuseMap</div>
+        <nav class="nav-links"> <a href="home.html">Home</a> <a href="booking.html">Booking</a> <a href="quiz.html">Quiz</a> <a href="login.html">Login</a> <a href="chatbot.html">Chatbot</a> </nav>
+    </header>
+    <main>
+        <h2>Register</h2>
+        <form id="register-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Register</button>
+        </form>
+        <div class="login-link"> Already have an account? <a href="login.html">Login here</a> </div>
+    </main>
+    <script>
+        window.onload = function() {
+            // Initialize Supabase
+            const SUPABASE_URL = 'https://ahhxdfrcuumgfwgnoyjz.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFoaHhkZnJjdXVtZ2Z3Z25veWp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI1NDkyNzIsImV4cCI6MjA1ODEyNTI3Mn0.7eql24ro-5h0gv4pIYoDrL5DqjzS7JCYC_6x8k4PqT8';
+            const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+            console.log('Supabase initialized');
+
+            // Function to handle register form submission
+            async function handleRegisterFormSubmission(event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                console.log('Form submitted:', { name, email, password });
+
+                // Sign up the user with Supabase Auth
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password
+                });
+
+                if (error) {
+                    console.error('Error registering:', error.message);
+                    if (error.message.includes('email rate limit exceeded')) {
+                        alert('Error registering: Too many sign-up attempts. Please try again later.');
+                    } else {
+                        alert('Error registering: ' + error.message);
+                    }
+                } else {
+                    console.log('Sign up response:', data);
+
+                    if (!data.user) {
+                        console.error('User object is undefined');
+                        alert('User object is undefined');
+                        return;
+                    }
+
+                    // Insert user data into the users table
+                    const { data: insertData, error: insertError } = await supabase
+                        .from('users')
+                        .insert([
+                            { id: data.user.id, name: name, email: email, password: password }
+                        ]);
+
+                    if (insertError) {
+                        console.error('Error inserting user data:', insertError.message);
+                        alert('Error inserting user data: ' + insertError.message);
+                    } else {
+                        console.log('User data inserted:', insertData);
+                        alert('Registered successfully!');
+                        // Redirect or perform other actions after successful registration
+                        window.location.href = 'login.html'; // Redirect to login page
+                    }
+                }
+            }
+
+            // Add event listener to the form
+            document.getElementById('register-form').addEventListener('submit', handleRegisterFormSubmission);
+        };
+    </script>
+</body>
+
+</html>

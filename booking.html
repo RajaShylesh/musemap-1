@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Ticket Booking</title>
+    <style> 
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+    }
+
+    *, *::before, *::after {
+        box-sizing: inherit;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fff;
+        min-height: 100vh;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        padding: 15px;
+        background-color: #fff;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .navbar a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+
+    .navbar a.active {
+        color: #f97316;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 30px;
+        max-width:87%;
+        margin: auto;
+        padding: 40px 20px;
+        flex-wrap: wrap;
+        flex: 1;
+    }
+
+    .ticket-selection, .booking-summary {
+        flex: 1;
+        max-width: 50%;
+        min-width: 500px;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+    }
+
+    .ticket-selection {
+        background-color: #f8d7c4;
+        color: black;
+    }
+
+    .booking-summary {
+        background-color: #f97316;
+        color: black;
+    }
+
+    .ticket-selection h2, .booking-summary h2 {
+        text-align: left;
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .ticket-selection input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .proceed-btn {
+        background-color: white;
+        color: black;
+        font-weight: bold;
+        width: 100%;
+        padding: 12px;
+        border: 2px solid black;
+        cursor: pointer;
+        text-align: center;
+        display: inline-block;
+        text-decoration: none;
+        margin-top: 15px;
+    }
+
+    .proceed-btn:hover {
+        background-color: #ddd;
+    }
+
+    .extras {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: nowrap;
+    }
+    .extras label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap; 
+    }
+
+    .footer {
+        background: #f4d1b5;
+        text-align: center;
+        padding: 20px;
+        margin-top: auto;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            align-items: center;
+            max-width: 100%;
+            padding: 20px;
+        }
+
+        .ticket-selection, .booking-summary {
+            max-width: 90%;
+            min-width: unset;
+            margin-bottom: 20px;
+        }
+    }
+    </style> 
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="booking.html" class="active">Booking</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="admin.html">Admin</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+    </div>
+
+    <div class="container">
+        <div class="ticket-selection">
+            <h2>Select Your Tickets</h2>
+
+            <label>Adult (₹200 each):</label>
+            <input type="number" id="adultCount" value="0" min="0">
+
+            <label>Child (₹100 each):</label>
+            <input type="number" id="childCount" value="0" min="0">
+
+            <label>Senior (₹150 each):</label>
+            <input type="number" id="seniorCount" value="0" min="0">
+
+            <label>Visit Date:</label>
+            <input type="date" id="visitDate">
+
+            <div class="extras">
+                <span>Extras:</span>
+                <label><input type="checkbox" id="audioGuide"> Audio Guide (₹50 per person)</label>
+                <label><input type="checkbox" id="guidedTour"> Guided Tour (₹150 per person)</label>
+            </div>
+        </div>
+
+        <div class="booking-summary">
+            <h2>Booking Summary</h2>
+            <p><strong>Adult Tickets:</strong> <span id="summaryAdult">0</span></p>
+            <p><strong>Child Tickets:</strong> <span id="summaryChild">0</span></p>
+            <p><strong>Senior Tickets:</strong> <span id="summarySenior">0</span></p>
+            <p><strong>Visit Date:</strong> <span id="summaryVisitDate">Not Selected</span></p>
+            <p><strong>Extras:</strong> <span id="summaryExtras">None</span></p>
+            <p><strong>Total:</strong> ₹<span id="summaryTotal">0</span></p>
+
+            <a href="payment.html" class="proceed-btn">PROCEED TO PAYMENT</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 MuseMap. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function updateSummary() {
+            let adultCount = parseInt(document.getElementById("adultCount").value) || 0;
+            let childCount = parseInt(document.getElementById("childCount").value) || 0;
+            let seniorCount = parseInt(document.getElementById("seniorCount").value) || 0;
+            let visitDate = document.getElementById("visitDate").value;
+            let audioGuide = document.getElementById("audioGuide").checked;
+            let guidedTour = document.getElementById("guidedTour").checked;
+
+            let total = (adultCount * 200) + (childCount * 100) + (seniorCount * 150);
+
+            let extraCost = 0;
+            let selectedExtras = [];
+
+            if (audioGuide) {
+                extraCost += (adultCount + childCount + seniorCount) * 50;
+                selectedExtras.push("Audio Guide");
+            }
+            if (guidedTour) {
+                extraCost += (adultCount + childCount + seniorCount) * 150;
+                selectedExtras.push("Guided Tour");
+            }
+
+            total += extraCost;
+
+            document.getElementById("summaryAdult").innerText = adultCount;
+            document.getElementById("summaryChild").innerText = childCount;
+            document.getElementById("summarySenior").innerText = seniorCount;
+            document.getElementById("summaryVisitDate").innerText = visitDate || "Not Selected";
+            document.getElementById("summaryExtras").innerText = selectedExtras.length ? selectedExtras.join(", ") : "None";
+            document.getElementById("summaryTotal").innerText = total;
+        }
+
+        document.querySelectorAll("#adultCount, #childCount, #seniorCount, #visitDate, #audioGuide, #guidedTour").forEach(element => {
+            element.addEventListener("change", updateSummary);
+        });
+    </script>
+
+</body>
+</html>
+
