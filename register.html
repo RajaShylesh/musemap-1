@@ -12,6 +12,9 @@
             background-color: #fde5d4;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -47,6 +50,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            flex: 1;
         }
 
         h2 {
@@ -93,13 +97,34 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        footer {
+            background-color: #f4d1b5;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <div class="logo">MuseMap</div>
-        <nav class="nav-links"> <a href="home.html">Home</a> <a href="booking.html">Booking</a> <a href="quiz.html">Quiz</a> <a href="login.html">Login</a> <a href="chatbot.html">Chatbot</a> </nav>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="booking.html">Booking</a>
+            <a href="chatbot.html">Chatbot</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="admin.html">Admin</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
+        </nav>
     </header>
     <main>
         <h2>Register</h2>
@@ -112,8 +137,19 @@
             <input type="password" id="password" name="password" required>
             <button type="submit">Register</button>
         </form>
-        <div class="login-link"> Already have an account? <a href="login.html">Login here</a> </div>
+        <div class="login-link">
+            Already have an account? <a href="login.html">Login here</a>
+        </div>
     </main>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="about.html">About</a>
+        </div>
+        <p>&copy; 2025 MuseMap. All rights reserved.</p>
+    </footer>
     <script>
         window.onload = function() {
             // Initialize Supabase

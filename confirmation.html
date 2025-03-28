@@ -22,12 +22,11 @@
             padding: 1rem 2rem;
         }
         .logo {
-            color: black;
             font-size: 24px;
             font-weight: bold;
         }
         .nav-links a {
-            color: black;
+            color: white;
             text-decoration: none;
             margin-left: 15px;
             font-size: 18px;
@@ -39,7 +38,7 @@
             max-width: 500px;
             margin: 50px auto;
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -50,6 +49,9 @@
         .confirmation-details {
             margin-top: 20px;
             font-size: 18px;
+            background: #fff3eb;
+            padding: 20px;
+            border-radius: 5px;
         }
         .home-button {
             display: inline-block;
@@ -64,17 +66,31 @@
         .home-button:hover {
             background-color: #d14e1a;
         }
+        footer {
+            background-color: #f4d1b5;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        .footer-links a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">MuseMap</div>
         <nav class="nav-links">
-            <a href="home.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="booking.html">Booking</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="login.html">Login</a>
             <a href="chatbot.html">Chatbot</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="admin.html">Admin</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
         </nav>
     </header>
     <main>
@@ -85,9 +101,18 @@
             <p><strong>Museum:</strong> Example Museum</p>
             <p><strong>Date:</strong> March 10, 2025</p>
             <p><strong>Tickets:</strong> 2 Adults, 1 Child</p>
-            <p><strong>Total Paid:</strong> $50.00</p>
+            <p><strong>Total Paid:</strong> ₹500.00</p>
         </div>
-        <a href="home.html" class="home-button">Return to Home</a>
+        <a href="index.html" class="home-button">Return to Home</a>
     </main>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="about.html">About</a>
+        </div>
+        <p>&copy; 2025 MuseMap. All rights reserved.</p>
+    </footer>
 </body>
 </html>

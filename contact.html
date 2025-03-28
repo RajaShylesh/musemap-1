@@ -22,12 +22,11 @@
             padding: 1rem 2rem;
         }
         .logo {
-            color: black;
             font-size: 24px;
             font-weight: bold;
         }
         .nav-links a {
-            color: black;
+            color: white;
             text-decoration: none;
             margin-left: 15px;
             font-size: 18px;
@@ -39,13 +38,13 @@
             max-width: 500px;
             margin: 50px auto;
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
         h2 {
             color: #f16322;
+            text-align: center;
         }
         label {
             display: block;
@@ -54,14 +53,15 @@
         }
         input, textarea {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 5px;
-            border: 1px solid #ccc;
+            border: 1px solid #f7f7f7;
             border-radius: 5px;
+            background-color: #ffffff;
         }
         button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: #f16322;
             color: white;
             border: none;
@@ -73,22 +73,36 @@
         button:hover {
             background-color: #d14e1a;
         }
+        footer {
+            background-color: #f4d1b5;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+        .footer-links a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">MuseMap</div>
         <nav class="nav-links">
-            <a href="home.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="booking.html">Booking</a>
-            <a href="quiz.html">Quiz</a>
-            <a href="login.html">Login</a>
             <a href="chatbot.html">Chatbot</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="admin.html">Admin</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
         </nav>
     </header>
     <main>
         <h2>Contact Us</h2>
-        <p>If you have any questions, feel free to reach out to us!</p>
+        <p style="text-align: center;">If you have any questions, feel free to reach out to us!</p>
         <form>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -102,5 +116,14 @@
             <button type="submit">Send Message</button>
         </form>
     </main>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="about.html">About</a>
+        </div>
+        <p>&copy; 2025 MuseMap. All rights reserved.</p>
+    </footer>
 </body>
 </html>

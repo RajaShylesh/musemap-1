@@ -94,24 +94,61 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        footer {
+            background-color: #f4d1b5;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <div class="logo">MuseMap</div>
-        <nav class="nav-links"> <a href="home.html">Home</a> <a href="booking.html">Booking</a> <a
-                href="quiz.html">Quiz</a> <a href="login.html">Login</a> <a href="chatbot.html">Chatbot</a> </nav>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="booking.html">Booking</a>
+            <a href="chatbot.html">Chatbot</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="admin.html">Admin</a>
+            <a href="about.html">About</a>
+            <a href="login.html">Login</a>
+        </nav>
     </header>
     <main>
         <h2>Login</h2>
-        <form> <label for="email">Email:</label> <input type="email" id="email" name="email" required> <label
-                for="password">Password:</label> <input type="password" id="password" name="password" required> <button
-                type="submit">Login</button> </form>
-        <div class="register-link"> Don't have an account? <a href="register.html">Register here</a> </div>
-        <div class="register-link"> Login as Admin <a href="adminlogin.html">Click here</a> </div>
-        
+        <form>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="register-link">
+            Don't have an account? <a href="register.html">Register here</a>
+        </div>
+        <div class="register-link">
+            Login as Admin <a href="adminlogin.html">Click here</a>
+        </div>
     </main>
+    <footer>
+        <div class="footer-links">
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="about.html">About</a>
+        </div>
+        <p>&copy; 2025 MuseMap. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>

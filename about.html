@@ -3,112 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musemap - About</title>
+    <title>MuseMap - About</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        html, body {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fde5d4;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
-            min-height: 100vh;
         }
         header {
-            background-color: #ffffff;
+            background-color: #f16322;
+            color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
         }
         .logo {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
-            color: #000000;
         }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin-left: 20px;
-        }
-        nav ul li a {
+        .nav-links a {
+            color: white;
             text-decoration: none;
-            color: #000000;
-            font-weight: 500;
+            margin-left: 15px;
+            font-size: 18px;
         }
-        nav ul li a:hover {
-            color: #ff7b3e;
-        }
-        nav ul li a.active {
-            color: #ff7b3e;
+        .nav-links a:hover {
+            text-decoration: underline;
         }
         main {
-            flex: 1;
-            padding: 40px;
             max-width: 900px;
-            margin: 0 auto;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h2 {
-            color: #000;
+            color: #f16322;
+            text-align: center;
         }
         .contact-details {
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
+            margin-top: 20px;
         }
         .contact-details div {
             width: 48%;
+            padding: 20px;
+            background: #fff3eb;
+            border-radius: 5px;
         }
         .highlight {
-            color: #ff7b3e;
+            color: #f16322;
             font-weight: bold;
         }
         a {
-            color: #ff7b3e;
+            color: #f16322;
             text-decoration: none;
         }
         footer {
-            background-color: #fce5d0;
+            background-color: #f4d1b5;
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             margin-top: auto;
         }
         .footer-links a {
             margin: 0 10px;
             color: #000;
             text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">🏛 Musemap</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="booking.html">Booking</a></li>
-                <li><a href="chatbot.html">Chatbot</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="about.html" class="active">About</a></li>
-            </ul>
+        <div class="logo">MuseMap</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="booking.html">Booking</a>
+            <a href="chatbot.html">Chatbot</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="admin.html">Admin</a>
+            <a href="about.html" class="active">About</a>
+            <a href="login.html">Login</a>
         </nav>
     </header>
 
     <main>
         <section class="about">
-            <h2>About Musemap</h2>
+            <h2>About MuseMap</h2>
             <p>
-                MuseumExplorer is dedicated to making the world's museums accessible to everyone. 
+                MuseMap is dedicated to making the world's museums accessible to everyone. 
                 Our platform provides comprehensive listings of museums around the globe, 
                 allowing users to explore cultural heritage sites from the comfort of their homes.
             </p>
@@ -129,7 +117,7 @@
                 <div class="email">
                     <h3>Email Us</h3>
                     <p>For any inquiries, please email us at 
-                        <a href="mailto:support@museumexplorer.com">support@museumexplorer.com</a>.
+                        <a href="mailto:support@musemap.com">support@musemap.com</a>.
                     </p>
                 </div>
                 <div class="phone">
